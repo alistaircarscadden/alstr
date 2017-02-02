@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void *almemchr(const void *str, int c, size_t n) {
+void* almemchr(const void* str, int c, size_t n) {
     char* ptr = str;
     while(ptr - (char*)str < n) {
         if(*ptr == c)
@@ -23,107 +23,146 @@ void *almemchr(const void *str, int c, size_t n) {
     return NULL;
 }
 
-int almemcmp(const void *str1, const void *str2, size_t n) {
+int almemcmp(const void* str1, const void* str2, size_t n) {
     /* incompleto */
     return 0;
 }
 
-void *almemcpy(void *dest, const void *src, size_t n) {
+void* almemcpy(void* dest, const void* src, size_t n) {
     /* incompleto */
     return 0;
 }
 
-void *almemmove(void *dest, const void *src, size_t n) {
+void* almemmove(void* dest, const void* src, size_t n) {
     /* incompleto */
     return 0;
 }
 
-void *almemset(void *str, int c, size_t n) {
+void* almemset(void* str, int c, size_t n) {
     /* incompleto */
     return 0;
 }
 
-char *alstrcat(char *dest, const char *src) {
+char* alstrcat(char* dest, const char* src) {
+    size_t destlen = strlen(dest);
+	char* ptr = src;
+	
+	while(*ptr != '\0')
+		dest[destlen + ptr - src] = *ptr++;
+	
+    return dest;
+}
+
+char* alstrncat(char* dest, const char* src, size_t n) {
+    size_t destlen = strlen(dest);
+	char* ptr = src;
+	
+	while(*ptr != '\0' && ptr - src < n)
+		dest[destlen + ptr - src] = *ptr++;
+	
+    return dest;
+}
+
+char* alstrchr(const char* str, int c) {
+    char* ptr = str;
+	
+	while(*ptr != '\0') {
+		if(*ptr == c)
+			return ptr;
+		ptr++;
+	}
+	
+    return NULL;
+}
+
+int alstrcmp(const char* str1, const char* str2) {
     /* incompleto */
     return 0;
 }
 
-char *alstrncat(char *dest, const char *src, size_t n) {
+int alstrncmp(const char* str1, const char* str2, size_t n) {
     /* incompleto */
     return 0;
 }
 
-char *alstrchr(const char *str, int c) {
+int alstrcoll(const char* str1, const char* str2) {
     /* incompleto */
     return 0;
 }
 
-int alstrcmp(const char *str1, const char *str2) {
+char* alstrcpy(char* dest, const char* src) {
+    char* ptr = src;
+	
+	while(*ptr != '\0')
+		dest[ptr - src] = *ptr++;
+	
+    return dest;
+}
+
+char* alstrncpy(char* dest, const char* src, size_t n) {
+    char* ptr = src;
+	
+	while(*ptr != '\0' && ptr - src < n)
+		dest[ptr - src] = *ptr++;
+	
+    return dest;
+    return 0;
+}
+
+size_t alstrcspn(const char* str1, const char* str2) {
     /* incompleto */
     return 0;
 }
 
-int alstrncmp(const char *str1, const char *str2, size_t n) {
+char* alstrerror(int errnum) {
     /* incompleto */
     return 0;
 }
 
-int alstrcoll(const char *str1, const char *str2) {
+size_t alstrlen(const char* str) {
+    char* ptr = str;
+	int len = 0;
+	
+	while(*ptr++ != '\0')
+		len++;
+	
+    return len;
+}
+
+char* alstrpbrk(const char* str1, const char* str2) {
     /* incompleto */
     return 0;
 }
 
-char *alstrcpy(char *dest, const char *src) {
+char* alstrrchr(const char* str, int c) {
+    char* ptr = str;
+	char* last = NULL;
+	
+	while(*ptr != '\0') {
+		if(*ptr == c)
+			last = ptr;
+		ptr++;
+	}
+	
+    return last;
+}
+
+size_t alstrspn(const char* str1, const char* str2) {
     /* incompleto */
     return 0;
 }
 
-char *alstrncpy(char *dest, const char *src, size_t n) {
+char* alstrstr(const char* haystack, const char* needle) {
     /* incompleto */
     return 0;
 }
 
-size_t alstrcspn(const char *str1, const char *str2) {
+char* alstrtok(char* str, const char* delim) {
     /* incompleto */
     return 0;
 }
 
-char *alstrerror(int errnum) {
-    /* incompleto */
-    return 0;
-}
-
-size_t alstrlen(const char *str) {
-    /* incompleto */
-    return 0;
-}
-
-char *alstrpbrk(const char *str1, const char *str2) {
-    /* incompleto */
-    return 0;
-}
-
-char *alstrrchr(const char *str, int c) {
-    /* incompleto */
-    return 0;
-}
-
-size_t alstrspn(const char *str1, const char *str2) {
-    /* incompleto */
-    return 0;
-}
-
-char *alstrstr(const char *haystack, const char *needle) {
-    /* incompleto */
-    return 0;
-}
-
-char *alstrtok(char *str, const char *delim) {
-    /* incompleto */
-    return 0;
-}
-
-size_t alstrxfrm(char *dest, const char *src, size_t n) {
+size_t alstrxfrm(char* dest, const char* src, size_t n) {
     /* incompleto */
     return 0;
 }
